@@ -21,15 +21,19 @@ import lombok.Setter;
 public class Comment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "index")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "commentId")
     private Long id;
 
     private String commentText;
-    private String userHandle;
+    
+    private String submittedBy;
 
     @Column(name = "story_id")
     private Long storyId;
+    
+    private int childComments;
+
 
 
 }

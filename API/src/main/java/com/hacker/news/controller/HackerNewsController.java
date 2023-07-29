@@ -4,6 +4,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hacker.news.entity.Comment;
@@ -16,6 +18,17 @@ public class HackerNewsController {
 	@Autowired
 	NewsService newsService;
 	
+	 @PostMapping("/create-story")
+	    public Story createStory(@RequestBody Story newStory) {
+	        return newsService.createStory(newStory);
+	    }
+
+	    @PostMapping("/add-comment")
+	    public Comment addCommentToStory( @RequestBody Comment newComment) {
+	      
+	    	return newsService.addCommentToStory(newComment);
+	    }
+	    
     @GetMapping("/top-stories")
     public List<Story> getTopStories() {
     	
@@ -29,7 +42,7 @@ public class HackerNewsController {
     }
 
     @GetMapping("/comments/{storyId}")
-    public List<Comment> getCommentsForStory(@PathVariable String storyId) {
+    public List<Comment> getCommentsForStory(@PathVariable Long storyId) {
         
         return this.newsService.getCommentsForStory(storyId);
     }
