@@ -11,6 +11,10 @@ public interface NewsService {
 
 	List<Story> getPastStories();
 
-	List<Comment> getCommentsForStory(String storyId);
+	List<Comment> getCommentsForStory(Long storyId);
+	
+    Story createStory(Story newStory);
+    
+    Comment addCommentToStory(Comment newComment);
 
 }

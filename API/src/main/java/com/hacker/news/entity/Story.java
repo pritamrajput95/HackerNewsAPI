@@ -24,7 +24,7 @@ import lombok.Setter;
 public class Story {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name ="storyId")
     private Long id; // This is the identifier field
 
